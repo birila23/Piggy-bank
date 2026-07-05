@@ -1,16 +1,29 @@
 //esse é o dto de cada gasto
-import { IsString, IsNumber, IsOptional, IsIn } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsOptional,
+  IsIn,
+  IsPositive,
+  IsISO8601,
+} from 'class-validator';
+
 export class AddSpentDto {
   @IsString()
-  nome!: string;
+  name: string;
 
   @IsNumber()
-  valor!: number;
+  @IsPositive()
+  moneyValue: number;
 
   @IsOptional()
   @IsString()
-  descrição?: string;
+  description?: string;
 
   @IsIn(['Alimentação', 'Lazer', 'Estudos', 'Saúde', 'Fixo', 'Outros'])
-  categoria!: string;
+  category: string;
+
+  @IsString()
+  @IsISO8601()
+  monthId: string;
 }

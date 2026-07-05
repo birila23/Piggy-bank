@@ -1,7 +1,8 @@
 import { Controller, Get, Param, Post } from '@nestjs/common';
+import { IBudgetsController } from './budgets.controller.interface';
 
 @Controller('budgets')
-export class BudgetsController {
+export class BudgetsController implements IBudgetsController {
   @Get()
   findAll(): string {
     return;
